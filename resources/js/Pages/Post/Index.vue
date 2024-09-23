@@ -1,9 +1,11 @@
 <script setup>
 import {Link, router} from "@inertiajs/vue3";
 
-defineProps({
+const props = defineProps({
     posts: Array
 });
+
+const reversedPosts = [...props.posts].reverse(); // Копируем и переворачиваем массив
 
 function deletePost(id) {
     router.delete(`/posts/${id}`)
@@ -13,10 +15,10 @@ function deletePost(id) {
 <template>
         <h1 class="text-xl mb-3">Posts</h1>
         <div>
-            <Link :href="route('post.create')" class="hover:bg-emerald-500 block p-2 w-auto bg-emerald-400 rounded-full text-center text-white">Add Post</Link>
+            <Link :href="route('post.create')" class="hover:bg-emerald-500 block p-2 w-1/2 mx-auto bg-emerald-400 rounded-full text-center text-white">Add Post</Link>
         </div>
         <div v-if="posts && posts.length">
-            <div class="mt-6 pt-6 border-t border-gray-300" v-for="post in posts">
+            <div class="mt-6 pt-6 border-t border-gray-300" v-for="post in [...posts].reverse()">
                 <div class="font-semibold text-lg mb-2">{{ post.title }}</div>
                 <div>{{ post.content.length > 300 ? post.content.slice(0, 300) + '...' : post.content }}</div>
                 <div class="text-sm text-right text-gray-400 flex justify-between">

@@ -13,11 +13,21 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        // Без пагинации
+        /*$posts = Post::all();
+
+        $posts = PostResource::collection($posts)->resolve();
+
+        return inertia('Post/Index', compact('posts'));*/
+
+
+        // С пагинацией
+        $posts = Post::paginate(4);
 
         $posts = PostResource::collection($posts)->resolve();
 
         return inertia('Post/Index', compact('posts'));
+
     }
 
     public function create()

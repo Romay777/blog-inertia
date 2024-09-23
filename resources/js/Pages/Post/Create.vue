@@ -26,11 +26,11 @@ function submit() {
         </div>
         <form @submit.prevent="submit">
             <div class="mb-4">
-                <input v-model="form.title" class="w-full rounded-full border-gray-300" type="text" placeholder="title">
+                <input v-model="form.title" class="w-full rounded-full border-gray-300 focus:border-emerald-500 focus:ring-emerald-500" type="text" placeholder="title">
                 <div v-if="props.errors.title" class="text-rose-500 text-sm">{{ props.errors.title}}</div>
             </div>
             <div class="mb-2">
-                <textarea v-model="form.content" class="w-full rounded-lg border-gray-300" placeholder="content"></textarea>
+                <textarea v-model="form.content" class="w-full rounded-lg border-gray-300 h-96 focus:border-emerald-500 focus:ring-emerald-500" placeholder="content"></textarea>
                 <div v-if="props.errors.content" class="text-rose-500 text-sm">{{ props.errors.content}}</div>
             </div>
             <div>

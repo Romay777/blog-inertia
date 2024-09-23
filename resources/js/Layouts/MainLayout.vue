@@ -3,7 +3,7 @@
 </script>
 
 <template>
-    <div class="w-1/3 mx-auto pt-8">
+    <div class="w-1/2 mx-auto pt-8">
         <slot />
     </div>
 </template>
