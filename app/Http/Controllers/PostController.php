@@ -21,7 +21,7 @@ class PostController extends Controller
         return inertia('Post/Index', compact('posts'));*/
 
         // С пагинацией
-        $paginator = Post::paginate(4); // 10 постов на страницу
+        $paginator = Post::orderBy('id', 'desc')->paginate(4); // 10 постов на страницу
 
         // Преобразуем посты в ресурс
         $posts = PostResource::collection($paginator);
