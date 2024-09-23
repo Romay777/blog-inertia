@@ -20,13 +20,22 @@ class PostController extends Controller
 
         return inertia('Post/Index', compact('posts'));*/
 
-
         // С пагинацией
-        $posts = Post::paginate(4);
+        $paginator = Post::paginate(4); // 10 постов на страницу
 
-        $posts = PostResource::collection($posts)->resolve();
+        // Преобразуем посты в ресурс
+        $posts = PostResource::collection($paginator);
 
-        return inertia('Post/Index', compact('posts'));
+        return inertia('Post/Index', [
+            'posts' => [
+                'data' => $posts,
+                'current_page' => $paginator->currentPage(),
+                'next_page_url' => $paginator->nextPageUrl(),
+                'prev_page_url' => $paginator->previousPageUrl(),
+                'last_page' => $paginator->lastPage(),
+                'total' => $paginator->total(),
+            ],
+        ]);
 
     }
 
