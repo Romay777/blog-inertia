@@ -13,18 +13,12 @@ class PostController extends Controller
 {
     public function index()
     {
-        // Без пагинации
-        /*$posts = Post::all();
-
-        $posts = PostResource::collection($posts)->resolve();
-
-        return inertia('Post/Index', compact('posts'));*/
-
         // С пагинацией
-        $paginator = Post::orderBy('id', 'desc')->paginate(4); // 10 постов на страницу
+        $paginator = Post::orderBy('id', 'desc')->paginate(6); // 10 постов на страницу
 
         // Преобразуем посты в ресурс
         $posts = PostResource::collection($paginator);
+
 
         return inertia('Post/Index', [
             'posts' => [
@@ -34,6 +28,8 @@ class PostController extends Controller
                 'prev_page_url' => $paginator->previousPageUrl(),
                 'last_page' => $paginator->lastPage(),
                 'total' => $paginator->total(),
+                'per_page' => $paginator->perPage(), // Добавляем количество элементов на страницу
+                'links' => $paginator->linkCollection(), // Генерируем ссылки для пагинации
             ],
         ]);
 
