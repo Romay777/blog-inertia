@@ -14,7 +14,7 @@ class PostController extends Controller
     public function index()
     {
         // С пагинацией
-        $paginator = Post::orderBy('id', 'desc')->paginate(6); // 10 постов на страницу
+        $paginator = Post::orderBy('id', 'desc')->paginate(6); // 4 постов на страницу
 
         // Преобразуем посты в ресурс
         $posts = PostResource::collection($paginator);

@@ -10,6 +10,7 @@ const props = defineProps({
 const form = reactive({
     title: null,
     content: null,
+    image: null
 })
 
 function submit() {
@@ -28,6 +29,10 @@ function submit() {
             <div class="mb-4">
                 <input v-model="form.title" class="w-full rounded-full border-gray-300 focus:border-emerald-500 focus:ring-emerald-500" type="text" placeholder="title">
                 <div v-if="props.errors.title" class="text-rose-500 text-sm">{{ props.errors.title}}</div>
+            </div>
+            <div class="mb-4">
+                <input v-model="form.image" class="w-full rounded-lg border-gray-300 focus:border-emerald-500 focus:ring-emerald-500" type="text" placeholder="image url">
+                <div v-if="props.errors.image" class="text-rose-500 text-sm">{{ props.errors.image}}</div>
             </div>
             <div class="mb-2">
                 <textarea v-model="form.content" class="w-full rounded-lg border-gray-300 h-96 focus:border-emerald-500 focus:ring-emerald-500" placeholder="content"></textarea>

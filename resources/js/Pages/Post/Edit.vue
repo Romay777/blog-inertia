@@ -11,7 +11,8 @@ const props = defineProps({
 const form = reactive({
     id: props.post.id,
     title: props.post.title,
-    content: props.post.content
+    content: props.post.content,
+    image: props.post.image
 });
 
 function submit() {
@@ -29,6 +30,9 @@ function submit() {
         <form @submit.prevent="submit">
             <div class="mb-4">
                 <input v-model="form.title" class="w-full rounded-full border-gray-300 focus:border-emerald-500 focus:ring-emerald-500" type="text" placeholder="title">
+            </div>
+            <div class="mb-4">
+                <input v-model="form.image" class="w-full rounded-lg border-gray-300 focus:border-emerald-500 focus:ring-emerald-500" type="text" placeholder="image url">
             </div>
             <div class="mb-2">
                 <textarea v-model="form.content" class="w-full rounded-lg h-96 border-gray-300 focus:border-emerald-500 focus:ring-emerald-500" placeholder="content"></textarea>

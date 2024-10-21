@@ -18,8 +18,9 @@ function deletePost(id) {
         <div v-if="props.posts.data && props.posts.data.data.length" class="grid grid-cols-1 sm:grid-cols-2 gap-6 ">
             <div class="min-h-40 mt-6 pt-6 border-t border-gray-300" v-for="post in props.posts.data.data">
                 <div>
-                    <div class="font-semibold text-lg mb-2 min-h-14">{{ post.title }}</div>
-                    <div>{{ post.content.length > 300 ? post.content.slice(0, 256) + '...' : post.content }}</div>
+                    <div class="font-semibold text-lg mb-2 max-h-20 truncate">{{ post.title }}</div>
+                    <div> <img :src="post.image" alt="Image" class="w-auto h-auto mb-2"></div>
+                    <div>{{ post.content.length > 196 ? post.content.slice(0, 196) + '...' : post.content }}</div>
                     <div class="text-sm text-right text-gray-400 flex justify-between">
                         <div>
                             id:{{ post.id }}
